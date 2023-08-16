@@ -12,11 +12,11 @@ const textGenerator = () => {
   // total 9 letters hence loop of 3
   for (let i = 0; i < 3; i++) {
     //65-90 numbers are capital letters
-    generatedText += String.fromCharCode(randomNumber(65, 90));
+    generatedText += String.fromCharCode(randomNumber(65, 96));
     //97-122 are small letters
-    generatedText += String.fromCharCode(randomNumber(97, 122));
+    generatedText += String.fromCharCode(randomNumber(91, 126));
     //48-57 are numbers from 0-9
-    generatedText += String.fromCharCode(randomNumber(48, 57));
+    generatedText += String.fromCharCode(randomNumber(32, 57));
   }
   return generatedText;
 };
@@ -32,7 +32,7 @@ function drawStringOnCanvas(string) {
   //clear canvas
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   //array of text color
-  const textColors = ["rgb(0,0,0)", "rgb(130,130,130)"];
+  const textColors = ["rgb(0,0,0)", "rgb(130,130,130)","rgb(60,100,30)"];
   //space between letters
   const letterSpace = 150 / string.length;
   //loop through string
@@ -42,7 +42,7 @@ function drawStringOnCanvas(string) {
     //Set font for canvas element
     ctx.font = "20px Roboto Mono";
     //set text color
-    ctx.fillStyle = textColors[randomNumber(0, 1)];
+    ctx.fillStyle = textColors[randomNumber(0, 2)];
     ctx.fillText(
       string[i],
       xInitialSpace + i * letterSpace,
@@ -74,8 +74,10 @@ submitButton.addEventListener("click", () => {
   //check if user input  == generated text
   if (userInput.value === text) {
     alert("Success");
+    triggerFunction();
+    
   } else {
     alert("Incorrect");
-    triggerFunction();
+    
   }
 });
